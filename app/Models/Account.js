@@ -33,6 +33,10 @@ class Account extends Model {
   messages () {
     return this.hasMany('App/Models/Message')
   }
+
+  messagesReceived () {
+    return this.hasMany('App/Models/Message')
+  }
 }
 
 module.exports = Account

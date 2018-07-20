@@ -14,6 +14,7 @@ class Message extends Model {
     recipient () {
         return this.belongsTo('App/Models/Account')
     }
+    
 }
 
 module.exports = Message
