@@ -33,47 +33,74 @@ class User extends Model {
   }
 
   /**
-   * A timeline post is associated with a specific user in an account.
+   * A user belongs to one account. An account can have many users.
+   */
+  account () {
+    return this.belongsTo('App/Models/Account')
+  }
+
+  /**
+   * A user is a partner. 
+   */
+  partner () {
+    return this.belongsTo('App/Models/Partner')
+  }
+  /**
+   * A user has many timeline posts. A timeline post is associated with a specific user in an account.
    */
   timelinePosts () {
     return this.hasMany('App/Models/TimelinePost')
   }
 
   /**
-   * A gallery image comment is associated with a specific user in an account.
+   * A user has many gallery image comments. A gallery image comment is associated with a specific user in an account.
    */
-  galleryImageComment () {
+  galleryImageComments () {
     return this.hasMany('App/Models/CommentGalleryImage')
   }
 
   /**
-   * A timeline comment is associated with a specific user in an account.
+   * A user has many timeline comments. A timeline comment is associated with a specific user in an account.
    */
-  timelinePostComment () {
+  timelinePostComments () {
     return this.hasMany('App/Models/CommentTimeline')
   }
 
   /**
-   * An event comment is associated with a specific user in an account.
+   * A user has many event comments. An event comment is associated with a specific user in an account.
    */
-  eventComment () {
+  eventComments () {
     return this.hasMany('App/Models/CommentEvent')
   }
 
   /**
-   * A message is associated with a specific user in an account.
+   * A user can like many timeline posts. 
    */
-  message () {
+  timelinePostLikes () {
+    return this.hasMany('App/Models/TimelinePostLike')
+  }
+
+  /**
+   * A user can like many gallery images.
+   */
+  galleryLikes () {
+    return this.hasMany('App/Models/GalleryLike')
+  }
+
+  /**
+   * A user can like many gallery images.
+   */
+  galleryImageLikes () {
+    return this.hasMany('App/Models/GalleryImageLike')
+  }
+
+  /**
+   * A user has many messages. A message is associated with a specific user in an account.
+   */
+  messages () {
     return this.hasMany('App/Models/Message')
   }
   
-  /**
-   * A user belongs to a partnership, which belongs to an account. 
-   */
-  partner () {
-    return this.belongsTo('App/Models/Partner')
-  }
-
 }
 
 module.exports = User
