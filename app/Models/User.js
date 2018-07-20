@@ -33,13 +33,6 @@ class User extends Model {
   }
 
   /**
-   * A user is associated with an account. 
-   */
-  account () {
-    return this.hasOne('App/Models/Account')
-  }
-
-  /**
    * A timeline post is associated with a specific user in an account.
    */
   timelinePosts () {
@@ -73,6 +66,14 @@ class User extends Model {
   message () {
     return this.hasMany('App/Models/Message')
   }
+  
+  /**
+   * A user belongs to a partnership, which belongs to an account. 
+   */
+  partner () {
+    return this.belongsTo('App/Models/Partner')
+  }
+
 }
 
 module.exports = User
