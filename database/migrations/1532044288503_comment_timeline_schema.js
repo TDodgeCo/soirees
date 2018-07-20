@@ -6,6 +6,7 @@ class CommentTimelineSchema extends Schema {
   up () {
     this.create('comment_timelines', (table) => {
       table.increments()
+      table.integer('user_id').unsigned().references('id').inTable('users')
       table.integer('account_id').unsigned().references('id').inTable('accounts')
       table.integer('timeline_post_id').unsigned().references('id').inTable('timeline_posts')
       table.text('comment')

@@ -31,6 +31,48 @@ class User extends Model {
   tokens () {
     return this.hasMany('App/Models/Token')
   }
+
+  /**
+   * A user is associated with an account. 
+   */
+  account () {
+    return this.hasOne('App/Models/Account')
+  }
+
+  /**
+   * A timeline post is associated with a specific user in an account.
+   */
+  timelinePosts () {
+    return this.hasMany('App/Models/TimelinePost')
+  }
+
+  /**
+   * A gallery image comment is associated with a specific user in an account.
+   */
+  galleryImageComment () {
+    return this.hasMany('App/Models/CommentGalleryImage')
+  }
+
+  /**
+   * A timeline comment is associated with a specific user in an account.
+   */
+  timelinePostComment () {
+    return this.hasMany('App/Models/CommentTimeline')
+  }
+
+  /**
+   * An event comment is associated with a specific user in an account.
+   */
+  eventComment () {
+    return this.hasMany('App/Models/CommentEvent')
+  }
+
+  /**
+   * A message is associated with a specific user in an account.
+   */
+  message () {
+    return this.hasMany('App/Models/Message')
+  }
 }
 
 module.exports = User
